@@ -232,6 +232,7 @@
             this.btnPlayAndRemove.TabIndex = 3;
             this.btnPlayAndRemove.Text = "Play and remove";
             this.btnPlayAndRemove.UseVisualStyleBackColor = true;
+            this.btnPlayAndRemove.Click += new System.EventHandler(this.btnPlayAndRemove_Click);
             // 
             // btnPlayRandomVideo
             // 
@@ -241,6 +242,7 @@
             this.btnPlayRandomVideo.TabIndex = 2;
             this.btnPlayRandomVideo.Text = "Play Random";
             this.btnPlayRandomVideo.UseVisualStyleBackColor = true;
+            this.btnPlayRandomVideo.Click += new System.EventHandler(this.btnPlayRandomVideo_Click);
             // 
             // btnPlaySelectedOnRepeat
             // 

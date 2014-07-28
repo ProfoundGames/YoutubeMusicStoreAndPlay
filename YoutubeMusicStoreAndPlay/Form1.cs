@@ -84,7 +84,7 @@ namespace YoutubeMusicStoreAndPlay
 
                 string tempURL = YoutubeVideoList[lbVideoList.SelectedIndex].VideoURL;
 
-                axShockwaveFlash1.Movie = "http://youtube.com/v/" + tempURL + "?autoplay=1&showinfo=0&rel=0&showinfo=0&loop=1";
+                axShockwaveFlash1.Movie = "http://youtube.com/v/" + tempURL + "&loop=1&autoplay=1";
                 
 
                 tabControl1.SelectedIndex = 1;
@@ -115,6 +115,40 @@ namespace YoutubeMusicStoreAndPlay
             }
             else
                 MessageBox.Show("You didn't filled in the name or Youtube url right.");
+
+            SaveVideoItems();
+
+            ReloadListBox();
+
+        }
+
+        private void btnPlayRandomVideo_Click(object sender, EventArgs e)
+        {
+
+            Random random = new Random();
+
+            int tempInt = random.Next(0, YoutubeVideoList.Count());
+
+            string tempURL = YoutubeVideoList[tempInt].VideoURL;
+
+            axShockwaveFlash1.Movie = "http://youtube.com/v/" + tempURL + "&loop=1&autoplay=1";
+
+            lbVideoList.SelectedIndex = tempInt;
+
+            tabControl1.SelectedIndex = 1;
+
+        }
+
+        private void btnPlayAndRemove_Click(object sender, EventArgs e)
+        {
+
+            string tempURL = YoutubeVideoList[lbVideoList.SelectedIndex].VideoURL;
+
+            axShockwaveFlash1.Movie = "http://youtube.com/v/" + tempURL + "?autoplay=1&showinfo=0&rel=0&showinfo=0";
+
+            tabControl1.SelectedIndex = 1;
+
+            YoutubeVideoList.RemoveAt(lbVideoList.SelectedIndex);
 
             SaveVideoItems();
 
@@ -282,6 +316,8 @@ namespace YoutubeMusicStoreAndPlay
             ReloadListBox();
 
         }
+
+        
 
         
         #region URLControlMethodes
