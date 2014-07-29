@@ -157,6 +157,112 @@ namespace YoutubeMusicStoreAndPlay
 
         }
 
+        private void btnRemoveVideo_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Are you sure you want to remove the video?", "Warning.", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                YoutubeVideoList.RemoveAt(lbVideoList.SelectedIndex);
+
+                SaveVideoItems();
+
+                ReloadListBox();
+            }
+
+        }
+
+        private void btnMoveSelectedItemUp_Click(object sender, EventArgs e)
+        {
+
+            if (lbVideoList.SelectedIndex != -1 && lbVideoList.SelectedIndex != 0)
+            {
+
+                YoutubeVideo tempYoutubeVideo = YoutubeVideoList[lbVideoList.SelectedIndex];
+
+                YoutubeVideoList[lbVideoList.SelectedIndex] = YoutubeVideoList[lbVideoList.SelectedIndex - 1];
+
+                YoutubeVideoList[lbVideoList.SelectedIndex - 1] = tempYoutubeVideo;
+
+                lbVideoList.SelectedIndex--;
+
+                SaveVideoItems();
+
+                ReloadListBox();
+
+
+            }
+        }
+
+        private void btnMoveSelectedItemDown_Click(object sender, EventArgs e)
+        {
+
+            if (lbVideoList.SelectedIndex != -1 && lbVideoList.SelectedIndex != YoutubeVideoList.Count)
+            {
+
+                YoutubeVideo tempYoutubeVideo = YoutubeVideoList[lbVideoList.SelectedIndex];
+
+                YoutubeVideoList[lbVideoList.SelectedIndex] = YoutubeVideoList[lbVideoList.SelectedIndex + 1];
+
+                YoutubeVideoList[lbVideoList.SelectedIndex + 1] = tempYoutubeVideo;
+
+                lbVideoList.SelectedIndex++;
+
+                SaveVideoItems();
+
+                ReloadListBox();
+
+
+            }
+
+        }
+
+        private void btnExport_Click(object sender, EventArgs e)
+        {
+
+                FolderBrowserDialog folderDialog = new FolderBrowserDialog();
+
+                if(folderDialog.ShowDialog() == DialogResult.OK)
+                {
+
+                    txtExportPath.Text = folderDialog.SelectedPath;
+                    
+                }
+
+        }
+
+        private void btnGoExport_Click(object sender, EventArgs e)
+        {
+
+            if(DirectoryAndFileCheckerBool())
+            {
+                if (Directory.Exists(txtExportPath.Text) && File.Exists(txtExportPath.Text + "\\YoutubeVideoEXPORT.txt") != true)
+                {
+                    File.Copy(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Youtube video Storing\\" + "YoutubeVideo.txt", txtExportPath.Text + "\\YoutubeVideoEXPORT.txt");
+
+                    MessageBox.Show(string.Format("The file is exported to: {0}.\r\nAnd is named: YoutubeVideoEXPORT.txt.", txtExportPath.Text), "The file is exported.");
+                }
+                else
+                    MessageBox.Show("Your folder path isn't correct.\r\nOr the there already is a file named: YoutubeVideoEXPORT.txt", "Warning.");
+
+            }
+            else if(YoutubeVideoList.Count > 0)
+            {
+
+                DialogResult dialogResult = MessageBox.Show("There is no database found,\r\nbut there is some local data.\r\n\r\nDo you wish to export that data?", "Warning!", MessageBoxButtons.YesNo);
+                if (dialogResult == DialogResult.Yes)
+                {
+                    SaveVideoItems();
+
+                    btnGoExport_Click(sender, e);
+                }
+
+            }
+            else
+            {
+                MessageBox.Show("There is nothing to export!");
+            }
+
+        }
+
         #endregion
 
 
@@ -186,6 +292,8 @@ namespace YoutubeMusicStoreAndPlay
             if(lbVideoList.SelectedIndex != -1)
             {
 
+                axShockwaveFlash1.Movie = "";
+
                 string tempURL = YoutubeVideoList[lbVideoList.SelectedIndex].VideoURL;
 
                 axShockwaveFlash1.Movie = "http://youtube.com/v/" + tempURL + "?autoplay=1&showinfo=0&rel=0&showinfo=0";
@@ -205,6 +313,50 @@ namespace YoutubeMusicStoreAndPlay
             
         }
 
+        #region SearchBarCode
+        private void txtSearchBar_TextChanged(object sender, EventArgs e)
+        {
+            if (txtSearchBar.Text == " ")
+            {
+                txtSearchBar.Text = "";
+            }
+            else
+                lbVideoList.SelectedIndex = lbVideoList.FindString(txtSearchBar.Text.ToLower());
+
+        }
+
+        private void txtSearchBar_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if (e.KeyData == Keys.Return)
+            {
+
+                btnPlaySelectedVideo_Click(sender, e);
+
+            }
+
+        }
+
+        private void txtSearchBar_Enter(object sender, EventArgs e)
+        {
+
+            if (txtSearchBar.Text != "")
+            {
+                txtSearchBar.Text = "";
+            }
+
+        }
+        #endregion
+
+        private void txtExportPath_TextChanged(object sender, EventArgs e)
+        {
+
+            if (txtExportPath.Text != "")
+                btnGoExport.Visible = true;
+            else
+                btnGoExport.Visible = false;
+
+        }
 
         #endregion
 
@@ -235,6 +387,35 @@ namespace YoutubeMusicStoreAndPlay
             }
             #endregion
 
+        }
+
+        private bool DirectoryAndFileCheckerBool()
+        {
+            bool EndBool = false;
+
+            #region CheckDirectory
+            if (Directory.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Youtube video Storing\\"))
+            {
+                EndBool = true;
+            }
+            else
+            {
+                EndBool = false;
+            }
+            #endregion
+
+            #region CheckStoringFile
+            if (File.Exists(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData) + "\\Youtube video Storing\\" + "YoutubeVideo.txt"))
+            {
+                EndBool = true;
+            }
+            else
+            {
+                EndBool = false;
+            }
+            #endregion
+
+            return EndBool;
         }
 
         private void SaveVideoItems()
@@ -307,100 +488,58 @@ namespace YoutubeMusicStoreAndPlay
 
         }
 
+        //custom search methode [wip]
+        private int CompairString(string stringToCompair)
+        {
+
+            int counter = 0;
+
+            char[] stringCharArray = stringToCompair.ToCharArray();
+
+            foreach (YoutubeVideo item in YoutubeVideoList)
+            {
+
+                string tempString = item.Title;
+
+                char[] tempCharArray = tempString.ToCharArray();
+
+
+
+                for (int i = 0; i < stringToCompair.Count(); i++)
+                {
+                    
+                    
+
+                }
+
+                counter++;
+
+            }
+
+            return 1;
+
+        }
+
         #endregion
 
-        private void btnRemoveVideo_Click(object sender, EventArgs e)
+        private void btnImport_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Are you sure you want to remove the video?", "Warning.", MessageBoxButtons.YesNo) == DialogResult.Yes)
-            {
-                YoutubeVideoList.RemoveAt(lbVideoList.SelectedIndex);
 
-                SaveVideoItems();
-
-                ReloadListBox();
-            }
+            
 
         }
 
-        private void btnMoveSelectedItemUp_Click(object sender, EventArgs e)
+        private void btnGoImport_Click(object sender, EventArgs e)
         {
 
-            if(lbVideoList.SelectedIndex != -1 && lbVideoList.SelectedIndex != 0)
-            {
 
-                YoutubeVideo tempYoutubeVideo = YoutubeVideoList[lbVideoList.SelectedIndex];
-
-                YoutubeVideoList[lbVideoList.SelectedIndex] = YoutubeVideoList[lbVideoList.SelectedIndex - 1];
-
-                YoutubeVideoList[lbVideoList.SelectedIndex - 1] = tempYoutubeVideo;
-
-                lbVideoList.SelectedIndex--;
-
-                SaveVideoItems();
-
-                ReloadListBox();
-
-
-            }
-        }
-
-        private void btnMoveSelectedItemDown_Click(object sender, EventArgs e)
-        {
-
-            if (lbVideoList.SelectedIndex != -1 && lbVideoList.SelectedIndex != YoutubeVideoList.Count)
-            {
-
-                YoutubeVideo tempYoutubeVideo = YoutubeVideoList[lbVideoList.SelectedIndex];
-
-                YoutubeVideoList[lbVideoList.SelectedIndex] = YoutubeVideoList[lbVideoList.SelectedIndex + 1];
-
-                YoutubeVideoList[lbVideoList.SelectedIndex + 1] = tempYoutubeVideo;
-
-                lbVideoList.SelectedIndex++;
-
-                SaveVideoItems();
-
-                ReloadListBox();
-
-
-            }
 
         }
 
-        private void txtSearchBar_TextChanged(object sender, EventArgs e)
-        {
-            if(txtSearchBar.Text == " ")
-            {
-                txtSearchBar.Text = "";
-            }
-            else
-            lbVideoList.SelectedIndex = lbVideoList.FindString(txtSearchBar.Text);
-
-        }
-
-        private void txtSearchBar_KeyDown(object sender, KeyEventArgs e)
-        {
-
-            if(e.KeyData == Keys.Return)
-            {
-
-                btnPlaySelectedVideo_Click(sender, e);
-
-            }
-
-        }
-
-        private void txtSearchBar_Enter(object sender, EventArgs e)
-        {
-
-            if(txtSearchBar.Text != "")
-            {
-                txtSearchBar.Text = "";
-            }
-
-        }       
 
         
+
+
         #region URLControlMethodes
 
         #endregion

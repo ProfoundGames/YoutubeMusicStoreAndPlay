@@ -32,6 +32,15 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.axShockwaveFlash1 = new AxShockwaveFlashObjects.AxShockwaveFlash();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox5 = new System.Windows.Forms.GroupBox();
+            this.btnGoImport = new System.Windows.Forms.Button();
+            this.btnGoExport = new System.Windows.Forms.Button();
+            this.txtImportPath = new System.Windows.Forms.TextBox();
+            this.txtExportPath = new System.Windows.Forms.TextBox();
+            this.btnImport = new System.Windows.Forms.Button();
+            this.btnExport = new System.Windows.Forms.Button();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtSearchBar = new System.Windows.Forms.TextBox();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnUpdateVideoInto = new System.Windows.Forms.Button();
             this.btnAddNewVideo = new System.Windows.Forms.Button();
@@ -53,22 +62,15 @@
             this.btnMoveSelectedItemDown = new System.Windows.Forms.Button();
             this.lbVideoList = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.txtSearchBar = new System.Windows.Forms.TextBox();
-            this.groupBox5 = new System.Windows.Forms.GroupBox();
-            this.btnExport = new System.Windows.Forms.Button();
-            this.btnImport = new System.Windows.Forms.Button();
-            this.txtExportPath = new System.Windows.Forms.TextBox();
-            this.txtImportPath = new System.Windows.Forms.TextBox();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.groupBox5.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            this.groupBox5.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage3
@@ -76,7 +78,7 @@
             this.tabPage3.Controls.Add(this.axShockwaveFlash1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(812, 457);
+            this.tabPage3.Size = new System.Drawing.Size(815, 460);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Youtube player";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -106,6 +108,97 @@
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Video controls";
             // 
+            // groupBox5
+            // 
+            this.groupBox5.Controls.Add(this.btnGoImport);
+            this.groupBox5.Controls.Add(this.btnGoExport);
+            this.groupBox5.Controls.Add(this.txtImportPath);
+            this.groupBox5.Controls.Add(this.txtExportPath);
+            this.groupBox5.Controls.Add(this.btnImport);
+            this.groupBox5.Controls.Add(this.btnExport);
+            this.groupBox5.Location = new System.Drawing.Point(402, 294);
+            this.groupBox5.Name = "groupBox5";
+            this.groupBox5.Size = new System.Drawing.Size(386, 90);
+            this.groupBox5.TabIndex = 6;
+            this.groupBox5.TabStop = false;
+            this.groupBox5.Text = "Import / Export list";
+            // 
+            // btnGoImport
+            // 
+            this.btnGoImport.Location = new System.Drawing.Point(338, 61);
+            this.btnGoImport.Name = "btnGoImport";
+            this.btnGoImport.Size = new System.Drawing.Size(41, 23);
+            this.btnGoImport.TabIndex = 5;
+            this.btnGoImport.Text = "Go";
+            this.btnGoImport.UseVisualStyleBackColor = true;
+            this.btnGoImport.Click += new System.EventHandler(this.btnGoImport_Click);
+            // 
+            // btnGoExport
+            // 
+            this.btnGoExport.Location = new System.Drawing.Point(338, 20);
+            this.btnGoExport.Name = "btnGoExport";
+            this.btnGoExport.Size = new System.Drawing.Size(41, 23);
+            this.btnGoExport.TabIndex = 4;
+            this.btnGoExport.Text = "Go";
+            this.btnGoExport.UseVisualStyleBackColor = true;
+            this.btnGoExport.Visible = false;
+            this.btnGoExport.Click += new System.EventHandler(this.btnGoExport_Click);
+            // 
+            // txtImportPath
+            // 
+            this.txtImportPath.Location = new System.Drawing.Point(107, 63);
+            this.txtImportPath.Name = "txtImportPath";
+            this.txtImportPath.Size = new System.Drawing.Size(225, 20);
+            this.txtImportPath.TabIndex = 3;
+            // 
+            // txtExportPath
+            // 
+            this.txtExportPath.Location = new System.Drawing.Point(107, 22);
+            this.txtExportPath.Name = "txtExportPath";
+            this.txtExportPath.Size = new System.Drawing.Size(225, 20);
+            this.txtExportPath.TabIndex = 2;
+            this.txtExportPath.TextChanged += new System.EventHandler(this.txtExportPath_TextChanged);
+            // 
+            // btnImport
+            // 
+            this.btnImport.Location = new System.Drawing.Point(6, 61);
+            this.btnImport.Name = "btnImport";
+            this.btnImport.Size = new System.Drawing.Size(95, 23);
+            this.btnImport.TabIndex = 1;
+            this.btnImport.Text = "Import [wip]";
+            this.btnImport.UseVisualStyleBackColor = true;
+            this.btnImport.Click += new System.EventHandler(this.btnImport_Click);
+            // 
+            // btnExport
+            // 
+            this.btnExport.Location = new System.Drawing.Point(7, 20);
+            this.btnExport.Name = "btnExport";
+            this.btnExport.Size = new System.Drawing.Size(94, 23);
+            this.btnExport.TabIndex = 0;
+            this.btnExport.Text = "Export";
+            this.btnExport.UseVisualStyleBackColor = true;
+            this.btnExport.Click += new System.EventHandler(this.btnExport_Click);
+            // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.txtSearchBar);
+            this.groupBox2.Location = new System.Drawing.Point(4, 7);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(392, 49);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Search bar";
+            // 
+            // txtSearchBar
+            // 
+            this.txtSearchBar.Location = new System.Drawing.Point(7, 18);
+            this.txtSearchBar.Name = "txtSearchBar";
+            this.txtSearchBar.Size = new System.Drawing.Size(379, 20);
+            this.txtSearchBar.TabIndex = 0;
+            this.txtSearchBar.TextChanged += new System.EventHandler(this.txtSearchBar_TextChanged);
+            this.txtSearchBar.Enter += new System.EventHandler(this.txtSearchBar_Enter);
+            this.txtSearchBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchBar_KeyDown);
+            // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.btnUpdateVideoInto);
@@ -123,7 +216,7 @@
             this.groupBox1.Size = new System.Drawing.Size(386, 139);
             this.groupBox1.TabIndex = 4;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Add a video.";
+            this.groupBox1.Text = "Video controls";
             // 
             // btnUpdateVideoInto
             // 
@@ -324,71 +417,6 @@
             this.tabControl1.Size = new System.Drawing.Size(823, 486);
             this.tabControl1.TabIndex = 0;
             // 
-            // groupBox2
-            // 
-            this.groupBox2.Controls.Add(this.txtSearchBar);
-            this.groupBox2.Location = new System.Drawing.Point(4, 7);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(392, 49);
-            this.groupBox2.TabIndex = 5;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Search bar";
-            // 
-            // txtSearchBar
-            // 
-            this.txtSearchBar.Location = new System.Drawing.Point(7, 18);
-            this.txtSearchBar.Name = "txtSearchBar";
-            this.txtSearchBar.Size = new System.Drawing.Size(379, 20);
-            this.txtSearchBar.TabIndex = 0;
-            this.txtSearchBar.TextChanged += new System.EventHandler(this.txtSearchBar_TextChanged);
-            this.txtSearchBar.Enter += new System.EventHandler(this.txtSearchBar_Enter);
-            this.txtSearchBar.KeyDown += new System.Windows.Forms.KeyEventHandler(this.txtSearchBar_KeyDown);
-            // 
-            // groupBox5
-            // 
-            this.groupBox5.Controls.Add(this.txtImportPath);
-            this.groupBox5.Controls.Add(this.txtExportPath);
-            this.groupBox5.Controls.Add(this.btnImport);
-            this.groupBox5.Controls.Add(this.btnExport);
-            this.groupBox5.Location = new System.Drawing.Point(402, 294);
-            this.groupBox5.Name = "groupBox5";
-            this.groupBox5.Size = new System.Drawing.Size(386, 90);
-            this.groupBox5.TabIndex = 6;
-            this.groupBox5.TabStop = false;
-            this.groupBox5.Text = "Import / Export list";
-            // 
-            // btnExport
-            // 
-            this.btnExport.Location = new System.Drawing.Point(7, 20);
-            this.btnExport.Name = "btnExport";
-            this.btnExport.Size = new System.Drawing.Size(94, 23);
-            this.btnExport.TabIndex = 0;
-            this.btnExport.Text = "Export [wip]";
-            this.btnExport.UseVisualStyleBackColor = true;
-            // 
-            // btnImport
-            // 
-            this.btnImport.Location = new System.Drawing.Point(6, 61);
-            this.btnImport.Name = "btnImport";
-            this.btnImport.Size = new System.Drawing.Size(95, 23);
-            this.btnImport.TabIndex = 1;
-            this.btnImport.Text = "Import [wip]";
-            this.btnImport.UseVisualStyleBackColor = true;
-            // 
-            // txtExportPath
-            // 
-            this.txtExportPath.Location = new System.Drawing.Point(107, 22);
-            this.txtExportPath.Name = "txtExportPath";
-            this.txtExportPath.Size = new System.Drawing.Size(272, 20);
-            this.txtExportPath.TabIndex = 2;
-            // 
-            // txtImportPath
-            // 
-            this.txtImportPath.Location = new System.Drawing.Point(107, 63);
-            this.txtImportPath.Name = "txtImportPath";
-            this.txtImportPath.Size = new System.Drawing.Size(273, 20);
-            this.txtImportPath.TabIndex = 3;
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -405,15 +433,15 @@
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            this.groupBox5.ResumeLayout(false);
+            this.groupBox5.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.groupBox2.ResumeLayout(false);
-            this.groupBox2.PerformLayout();
-            this.groupBox5.ResumeLayout(false);
-            this.groupBox5.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -451,6 +479,8 @@
         private System.Windows.Forms.TextBox txtImportPath;
         private System.Windows.Forms.TextBox txtExportPath;
         private System.Windows.Forms.Button btnImport;
+        private System.Windows.Forms.Button btnGoImport;
+        private System.Windows.Forms.Button btnGoExport;
 
     }
 }
