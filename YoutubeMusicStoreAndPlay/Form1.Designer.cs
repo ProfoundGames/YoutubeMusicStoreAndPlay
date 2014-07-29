@@ -30,6 +30,7 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.axShockwaveFlash1 = new AxShockwaveFlashObjects.AxShockwaveFlash();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.btnUpdateVideoInto = new System.Windows.Forms.Button();
@@ -52,14 +53,16 @@
             this.btnMoveSelectedItemDown = new System.Windows.Forms.Button();
             this.lbVideoList = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.axShockwaveFlash1 = new AxShockwaveFlashObjects.AxShockwaveFlash();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.txtSearchBar = new System.Windows.Forms.TextBox();
             this.tabPage3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).BeginInit();
             this.tabPage2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).BeginInit();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage3
@@ -72,9 +75,19 @@
             this.tabPage3.Text = "Youtube player";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
+            // axShockwaveFlash1
+            // 
+            this.axShockwaveFlash1.Enabled = true;
+            this.axShockwaveFlash1.Location = new System.Drawing.Point(5, 4);
+            this.axShockwaveFlash1.Name = "axShockwaveFlash1";
+            this.axShockwaveFlash1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axShockwaveFlash1.OcxState")));
+            this.axShockwaveFlash1.Size = new System.Drawing.Size(800, 450);
+            this.axShockwaveFlash1.TabIndex = 0;
+            // 
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Controls.Add(this.groupBox3);
@@ -82,7 +95,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(812, 457);
+            this.tabPage2.Size = new System.Drawing.Size(815, 460);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Video controls";
             // 
@@ -288,9 +301,9 @@
             // lbVideoList
             // 
             this.lbVideoList.FormattingEnabled = true;
-            this.lbVideoList.Location = new System.Drawing.Point(10, 7);
+            this.lbVideoList.Location = new System.Drawing.Point(10, 59);
             this.lbVideoList.Name = "lbVideoList";
-            this.lbVideoList.Size = new System.Drawing.Size(386, 433);
+            this.lbVideoList.Size = new System.Drawing.Size(386, 394);
             this.lbVideoList.TabIndex = 0;
             this.lbVideoList.SelectedIndexChanged += new System.EventHandler(this.lbVideoList_SelectedIndexChanged);
             // 
@@ -298,20 +311,29 @@
             // 
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Location = new System.Drawing.Point(-1, -2);
+            this.tabControl1.Location = new System.Drawing.Point(-4, -2);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(820, 483);
+            this.tabControl1.Size = new System.Drawing.Size(823, 486);
             this.tabControl1.TabIndex = 0;
             // 
-            // axShockwaveFlash1
+            // groupBox2
             // 
-            this.axShockwaveFlash1.Enabled = true;
-            this.axShockwaveFlash1.Location = new System.Drawing.Point(5, 4);
-            this.axShockwaveFlash1.Name = "axShockwaveFlash1";
-            this.axShockwaveFlash1.OcxState = ((System.Windows.Forms.AxHost.State)(resources.GetObject("axShockwaveFlash1.OcxState")));
-            this.axShockwaveFlash1.Size = new System.Drawing.Size(800, 450);
-            this.axShockwaveFlash1.TabIndex = 0;
+            this.groupBox2.Controls.Add(this.txtSearchBar);
+            this.groupBox2.Location = new System.Drawing.Point(4, 7);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(392, 49);
+            this.groupBox2.TabIndex = 5;
+            this.groupBox2.TabStop = false;
+            this.groupBox2.Text = "Search bar";
+            // 
+            // txtSearchBar
+            // 
+            this.txtSearchBar.Location = new System.Drawing.Point(7, 18);
+            this.txtSearchBar.Name = "txtSearchBar";
+            this.txtSearchBar.Size = new System.Drawing.Size(379, 20);
+            this.txtSearchBar.TabIndex = 0;
+            this.txtSearchBar.TextChanged += new System.EventHandler(this.txtSearchBar_TextChanged);
             // 
             // Form1
             // 
@@ -327,13 +349,15 @@
             this.Text = "Youtube video store and player";
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Form1_FormClosing);
             this.tabPage3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).EndInit();
             this.tabPage2.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).EndInit();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -364,6 +388,8 @@
         private System.Windows.Forms.Button btnAddNewVideo;
         private System.Windows.Forms.Button btnUpdateVideoInto;
         private System.Windows.Forms.Button btnRemoveVideo;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.TextBox txtSearchBar;
 
     }
 }

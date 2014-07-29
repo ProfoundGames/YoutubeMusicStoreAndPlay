@@ -56,7 +56,9 @@ namespace YoutubeMusicStoreAndPlay
 
         private void btnCopySelectedVideoName_Click(object sender, EventArgs e)
         {
+
             Clipboard.SetText(YoutubeVideoList[lbVideoList.SelectedIndex].Title);
+
         }
 
         private void btnCopySelectedVideoURL_Click(object sender, EventArgs e)
@@ -362,6 +364,17 @@ namespace YoutubeMusicStoreAndPlay
 
 
             }
+
+        }
+
+        private void txtSearchBar_TextChanged(object sender, EventArgs e)
+        {
+            if(txtSearchBar.Text == " ")
+            {
+                txtSearchBar.Text = "";
+            }
+            else
+            lbVideoList.SelectedIndex = lbVideoList.FindString(txtSearchBar.Text);
 
         }       
 
