@@ -75,13 +75,13 @@
             // 
             // tabPage3
             // 
+            this.tabPage3.BackColor = System.Drawing.Color.Black;
             this.tabPage3.Controls.Add(this.axShockwaveFlash1);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Size = new System.Drawing.Size(815, 460);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Youtube player";
-            this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // axShockwaveFlash1
             // 
@@ -406,6 +406,7 @@
             this.lbVideoList.Size = new System.Drawing.Size(386, 394);
             this.lbVideoList.TabIndex = 0;
             this.lbVideoList.SelectedIndexChanged += new System.EventHandler(this.lbVideoList_SelectedIndexChanged);
+            this.lbVideoList.DoubleClick += new System.EventHandler(this.lbVideoList_DoubleClick);
             // 
             // tabControl1
             // 

@@ -536,6 +536,13 @@ namespace YoutubeMusicStoreAndPlay
 
         }
 
+        private void lbVideoList_DoubleClick(object sender, EventArgs e)
+        {
+
+            btnPlaySelectedVideo_Click(sender, e);
+
+        }
+
 
         
 
