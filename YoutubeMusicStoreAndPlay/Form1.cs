@@ -376,6 +376,28 @@ namespace YoutubeMusicStoreAndPlay
             else
             lbVideoList.SelectedIndex = lbVideoList.FindString(txtSearchBar.Text);
 
+        }
+
+        private void txtSearchBar_KeyDown(object sender, KeyEventArgs e)
+        {
+
+            if(e.KeyData == Keys.Return)
+            {
+
+                btnPlaySelectedVideo_Click(sender, e);
+
+            }
+
+        }
+
+        private void txtSearchBar_Enter(object sender, EventArgs e)
+        {
+
+            if(txtSearchBar.Text != "")
+            {
+                txtSearchBar.Text = "";
+            }
+
         }       
 
         
