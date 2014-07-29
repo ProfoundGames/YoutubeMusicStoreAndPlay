@@ -81,12 +81,10 @@ namespace YoutubeMusicStoreAndPlay
             if (btnAddVideo.Visible == false)
             {
                 EnableAddVideo();
-                btnAddNewVideo.Text = "Dis. add video";
             }
             else
             {
                 DisableAddVideo();
-                btnAddNewVideo.Text = "Ena. add video";
             }
         }
 
@@ -140,17 +138,20 @@ namespace YoutubeMusicStoreAndPlay
         private void btnPlayAndRemove_Click(object sender, EventArgs e)
         {
 
-            string tempURL = YoutubeVideoList[lbVideoList.SelectedIndex].VideoURL;
+            if (MessageBox.Show("Are you sure you want to play and remove the video?", "Warning.", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                string tempURL = YoutubeVideoList[lbVideoList.SelectedIndex].VideoURL;
 
-            axShockwaveFlash1.Movie = "http://youtube.com/v/" + tempURL + "?autoplay=1&showinfo=0&rel=0&showinfo=0";
+                axShockwaveFlash1.Movie = "http://youtube.com/v/" + tempURL + "?autoplay=1&showinfo=0&rel=0&showinfo=0";
 
-            tabControl1.SelectedIndex = 1;
+                tabControl1.SelectedIndex = 1;
 
-            YoutubeVideoList.RemoveAt(lbVideoList.SelectedIndex);
+                YoutubeVideoList.RemoveAt(lbVideoList.SelectedIndex);
 
-            SaveVideoItems();
+                SaveVideoItems();
 
-            ReloadListBox();
+                ReloadListBox();
+            }
 
         }
 
@@ -290,7 +291,7 @@ namespace YoutubeMusicStoreAndPlay
             txtVideoName.Text = "";
             txtVideoURL.Text = "Example: http://www.youtube.com/watch?v=abcdefghijk";
             btnAddVideo.Visible = true;
-
+            btnAddNewVideo.Text = "Dis. add video";
 
         }
 
@@ -300,6 +301,7 @@ namespace YoutubeMusicStoreAndPlay
             txtVideoName.Text = YoutubeVideoList[lbVideoList.SelectedIndex].Title;
             txtVideoURL.Text = "http://www.youtube.com/watch?v=" + YoutubeVideoList[lbVideoList.SelectedIndex].VideoURL;
             btnAddVideo.Visible = false;
+            btnAddNewVideo.Text = "Ena. add video";
 
         }
 
@@ -307,12 +309,14 @@ namespace YoutubeMusicStoreAndPlay
 
         private void btnRemoveVideo_Click(object sender, EventArgs e)
         {
+            if (MessageBox.Show("Are you sure you want to remove the video?", "Warning.", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                YoutubeVideoList.RemoveAt(lbVideoList.SelectedIndex);
 
-            YoutubeVideoList.RemoveAt(lbVideoList.SelectedIndex);
+                SaveVideoItems();
 
-            SaveVideoItems();
-
-            ReloadListBox();
+                ReloadListBox();
+            }
 
         }
 

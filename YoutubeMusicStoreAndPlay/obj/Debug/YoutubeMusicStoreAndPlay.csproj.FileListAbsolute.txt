@@ -28,9 +28,9 @@ D:\Defelopment\C#\YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay\bin\Debug\Yo
 D:\Defelopment\C#\YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay\bin\Debug\YoutubeMusicStoreAndPlay.pdb
 D:\Defelopment\C#\YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay\bin\Debug\Interop.ShockwaveFlashObjects.dll
 D:\Defelopment\C#\YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay\bin\Debug\AxInterop.ShockwaveFlashObjects.dll
-D:\Defelopment\C#\YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay\obj\Debug\YoutubeMusicStoreAndPlay.csprojResolveAssemblyReference.cache
 D:\Defelopment\C#\YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay\obj\Debug\YoutubeMusicStoreAndPlay.Form1.resources
 D:\Defelopment\C#\YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay\obj\Debug\YoutubeMusicStoreAndPlay.Properties.Resources.resources
 D:\Defelopment\C#\YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay\obj\Debug\YoutubeMusicStoreAndPlay.csproj.GenerateResource.Cache
 D:\Defelopment\C#\YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay\obj\Debug\YoutubeMusicStoreAndPlay.exe.manifest
 D:\Defelopment\C#\YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay\obj\Debug\YoutubeMusicStoreAndPlay.application
+D:\Defelopment\C#\YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay\obj\Debug\YoutubeMusicStoreAndPlay.csprojResolveAssemblyReference.cache
