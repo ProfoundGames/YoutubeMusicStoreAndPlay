@@ -363,7 +363,7 @@
             this.btnExport.Name = "btnExport";
             this.btnExport.Size = new System.Drawing.Size(94, 23);
             this.btnExport.TabIndex = 0;
-            this.btnExport.Text = "Export";
+            this.btnExport.Text = "Export [wip]";
             this.btnExport.UseVisualStyleBackColor = true;
             // 
             // btnImport
@@ -372,7 +372,7 @@
             this.btnImport.Name = "btnImport";
             this.btnImport.Size = new System.Drawing.Size(95, 23);
             this.btnImport.TabIndex = 1;
-            this.btnImport.Text = "Import";
+            this.btnImport.Text = "Import [wip]";
             this.btnImport.UseVisualStyleBackColor = true;
             // 
             // txtExportPath
