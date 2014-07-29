@@ -46,7 +46,6 @@
             this.groupBox4 = new System.Windows.Forms.GroupBox();
             this.btnPlayAndRemove = new System.Windows.Forms.Button();
             this.btnPlayRandomVideo = new System.Windows.Forms.Button();
-            this.btnPlaySelectedOnRepeat = new System.Windows.Forms.Button();
             this.btnPlaySelectedVideo = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.btnRemoveVideo = new System.Windows.Forms.Button();
@@ -84,6 +83,7 @@
             // 
             // tabPage2
             // 
+            this.tabPage2.BackColor = System.Drawing.Color.LightSkyBlue;
             this.tabPage2.Controls.Add(this.groupBox1);
             this.tabPage2.Controls.Add(this.groupBox4);
             this.tabPage2.Controls.Add(this.groupBox3);
@@ -94,7 +94,6 @@
             this.tabPage2.Size = new System.Drawing.Size(812, 457);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Video controls";
-            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // groupBox1
             // 
@@ -131,7 +130,7 @@
             this.btnAddNewVideo.Name = "btnAddNewVideo";
             this.btnAddNewVideo.Size = new System.Drawing.Size(96, 23);
             this.btnAddNewVideo.TabIndex = 9;
-            this.btnAddNewVideo.Text = "Add new video";
+            this.btnAddNewVideo.Text = "Ena. add video";
             this.btnAddNewVideo.UseVisualStyleBackColor = true;
             this.btnAddNewVideo.Click += new System.EventHandler(this.btnAddNewVideo_Click);
             // 
@@ -147,9 +146,9 @@
             // 
             // btnAddVideo
             // 
-            this.btnAddVideo.Location = new System.Drawing.Point(284, 110);
+            this.btnAddVideo.Location = new System.Drawing.Point(283, 110);
             this.btnAddVideo.Name = "btnAddVideo";
-            this.btnAddVideo.Size = new System.Drawing.Size(96, 23);
+            this.btnAddVideo.Size = new System.Drawing.Size(97, 23);
             this.btnAddVideo.TabIndex = 4;
             this.btnAddVideo.Text = "Add video";
             this.btnAddVideo.UseVisualStyleBackColor = true;
@@ -215,18 +214,17 @@
             // 
             this.groupBox4.Controls.Add(this.btnPlayAndRemove);
             this.groupBox4.Controls.Add(this.btnPlayRandomVideo);
-            this.groupBox4.Controls.Add(this.btnPlaySelectedOnRepeat);
             this.groupBox4.Controls.Add(this.btnPlaySelectedVideo);
-            this.groupBox4.Location = new System.Drawing.Point(402, 243);
+            this.groupBox4.Location = new System.Drawing.Point(402, 236);
             this.groupBox4.Name = "groupBox4";
-            this.groupBox4.Size = new System.Drawing.Size(386, 81);
+            this.groupBox4.Size = new System.Drawing.Size(386, 51);
             this.groupBox4.TabIndex = 3;
             this.groupBox4.TabStop = false;
             this.groupBox4.Text = "Video play controls";
             // 
             // btnPlayAndRemove
             // 
-            this.btnPlayAndRemove.Location = new System.Drawing.Point(7, 49);
+            this.btnPlayAndRemove.Location = new System.Drawing.Point(283, 19);
             this.btnPlayAndRemove.Name = "btnPlayAndRemove";
             this.btnPlayAndRemove.Size = new System.Drawing.Size(96, 23);
             this.btnPlayAndRemove.TabIndex = 3;
@@ -236,23 +234,13 @@
             // 
             // btnPlayRandomVideo
             // 
-            this.btnPlayRandomVideo.Location = new System.Drawing.Point(284, 20);
+            this.btnPlayRandomVideo.Location = new System.Drawing.Point(145, 19);
             this.btnPlayRandomVideo.Name = "btnPlayRandomVideo";
             this.btnPlayRandomVideo.Size = new System.Drawing.Size(96, 23);
             this.btnPlayRandomVideo.TabIndex = 2;
             this.btnPlayRandomVideo.Text = "Play Random";
             this.btnPlayRandomVideo.UseVisualStyleBackColor = true;
             this.btnPlayRandomVideo.Click += new System.EventHandler(this.btnPlayRandomVideo_Click);
-            // 
-            // btnPlaySelectedOnRepeat
-            // 
-            this.btnPlaySelectedOnRepeat.Location = new System.Drawing.Point(146, 19);
-            this.btnPlaySelectedOnRepeat.Name = "btnPlaySelectedOnRepeat";
-            this.btnPlaySelectedOnRepeat.Size = new System.Drawing.Size(96, 23);
-            this.btnPlaySelectedOnRepeat.TabIndex = 1;
-            this.btnPlaySelectedOnRepeat.Text = "Repeat";
-            this.btnPlaySelectedOnRepeat.UseVisualStyleBackColor = true;
-            this.btnPlaySelectedOnRepeat.Click += new System.EventHandler(this.btnPlaySelectedOnRepeat_Click);
             // 
             // btnPlaySelectedVideo
             // 
@@ -271,7 +259,7 @@
             this.groupBox3.Controls.Add(this.btnMoveSelectedItemDown);
             this.groupBox3.Location = new System.Drawing.Point(402, 152);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(386, 85);
+            this.groupBox3.Size = new System.Drawing.Size(386, 78);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
             this.groupBox3.Text = "Stored video\'s Controls";
@@ -294,15 +282,17 @@
             this.btnMoveSelectedItemUp.TabIndex = 5;
             this.btnMoveSelectedItemUp.Text = "Move item up";
             this.btnMoveSelectedItemUp.UseVisualStyleBackColor = true;
+            this.btnMoveSelectedItemUp.Click += new System.EventHandler(this.btnMoveSelectedItemUp_Click);
             // 
             // btnMoveSelectedItemDown
             // 
-            this.btnMoveSelectedItemDown.Location = new System.Drawing.Point(5, 48);
+            this.btnMoveSelectedItemDown.Location = new System.Drawing.Point(7, 48);
             this.btnMoveSelectedItemDown.Name = "btnMoveSelectedItemDown";
             this.btnMoveSelectedItemDown.Size = new System.Drawing.Size(96, 23);
             this.btnMoveSelectedItemDown.TabIndex = 4;
             this.btnMoveSelectedItemDown.Text = "Move item down";
             this.btnMoveSelectedItemDown.UseVisualStyleBackColor = true;
+            this.btnMoveSelectedItemDown.Click += new System.EventHandler(this.btnMoveSelectedItemDown_Click);
             // 
             // lbVideoList
             // 
@@ -328,6 +318,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.AutoSizeMode = System.Windows.Forms.AutoSizeMode.GrowAndShrink;
+            this.BackColor = System.Drawing.SystemColors.Highlight;
             this.ClientSize = new System.Drawing.Size(815, 479);
             this.Controls.Add(this.tabControl1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
@@ -365,7 +356,6 @@
         private System.Windows.Forms.Button btnMoveSelectedItemUp;
         private System.Windows.Forms.Button btnMoveSelectedItemDown;
         private System.Windows.Forms.Button btnPlayRandomVideo;
-        private System.Windows.Forms.Button btnPlaySelectedOnRepeat;
         private System.Windows.Forms.Button btnPlayAndRemove;
         private AxShockwaveFlashObjects.AxShockwaveFlash axShockwaveFlash1;
         private System.Windows.Forms.Button btnCopySelectedVideoName;

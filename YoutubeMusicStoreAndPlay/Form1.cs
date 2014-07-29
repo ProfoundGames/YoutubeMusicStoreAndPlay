@@ -61,7 +61,7 @@ namespace YoutubeMusicStoreAndPlay
 
         private void btnCopySelectedVideoURL_Click(object sender, EventArgs e)
         {
-            Clipboard.SetText(YoutubeVideoList[lbVideoList.SelectedIndex].VideoURL);
+            Clipboard.SetText("http://www.youtube.com/watch?v=" + YoutubeVideoList[lbVideoList.SelectedIndex].VideoURL);
         }
 
         private void btnCopyVideoListNames_Click(object sender, EventArgs e)
@@ -76,49 +76,47 @@ namespace YoutubeMusicStoreAndPlay
 
         }
 
-        private void btnPlaySelectedOnRepeat_Click(object sender, EventArgs e)
-        {
-
-            if (lbVideoList.SelectedIndex != -1)
-            {
-
-                string tempURL = YoutubeVideoList[lbVideoList.SelectedIndex].VideoURL;
-
-                axShockwaveFlash1.Movie = "http://youtube.com/v/" + tempURL + "&loop=1&autoplay=1";
-                
-
-                tabControl1.SelectedIndex = 1;
-
-            }
-
-        }
-
         private void btnAddNewVideo_Click(object sender, EventArgs e)
         {
-            EnableAddVideo();
+            if (btnAddVideo.Visible == false)
+            {
+                EnableAddVideo();
+                btnAddNewVideo.Text = "Dis. add video";
+            }
+            else
+            {
+                DisableAddVideo();
+                btnAddNewVideo.Text = "Ena. add video";
+            }
         }
 
         private void btnUpdateVideoInto_Click(object sender, EventArgs e)
         {
+            if (btnAddVideo.Visible == false)
+            {
+                if (txtVideoName.Text != "" && txtVideoURL.Text.Substring(0, 31) == "http://www.youtube.com/watch?v=")
+                {
+                    YoutubeVideoList[lbVideoList.SelectedIndex] = new YoutubeVideo(txtVideoName.Text, txtVideoURL.Text.Substring(31, 11));
+                    txtVideoName.Clear();
+                    txtVideoURL.Clear();
+                }
+                else if (txtVideoName.Text != "" && txtVideoURL.Text.Substring(0, 32) == "https://www.youtube.com/watch?v=")
+                {
+                    YoutubeVideoList[lbVideoList.SelectedIndex] = new YoutubeVideo(txtVideoName.Text, txtVideoURL.Text.Substring(32, 11));
+                    txtVideoName.Clear();
+                    txtVideoURL.Clear();
+                }
+                else
+                    MessageBox.Show("You didn't filled in the name or Youtube url right.");
 
-            if (txtVideoName.Text != "" && txtVideoURL.Text.Substring(0, 31) == "http://www.youtube.com/watch?v=")
-            {
-                YoutubeVideoList[lbVideoList.SelectedIndex] = new YoutubeVideo(txtVideoName.Text, txtVideoURL.Text.Substring(31, 11));
-                txtVideoName.Clear();
-                txtVideoURL.Clear();
-            }
-            else if (txtVideoName.Text != "" && txtVideoURL.Text.Substring(0, 32) == "https://www.youtube.com/watch?v=")
-            {
-                YoutubeVideoList[lbVideoList.SelectedIndex] = new YoutubeVideo(txtVideoName.Text, txtVideoURL.Text.Substring(32, 11));
-                txtVideoName.Clear();
-                txtVideoURL.Clear();
+                SaveVideoItems();
+
+                ReloadListBox();
             }
             else
-                MessageBox.Show("You didn't filled in the name or Youtube url right.");
-
-            SaveVideoItems();
-
-            ReloadListBox();
+            {
+                MessageBox.Show("Disable add video mode first! Then you can update the selected video's info.");
+            }
 
         }
 
@@ -198,8 +196,7 @@ namespace YoutubeMusicStoreAndPlay
         {
             if (lbVideoList.SelectedIndex != -1)
             {
-                txtVideoName.Text = YoutubeVideoList[lbVideoList.SelectedIndex].Title;
-                txtVideoURL.Text = "http://www.youtube.com/watch?v=" + YoutubeVideoList[lbVideoList.SelectedIndex].VideoURL;
+                
                 DisableAddVideo();
             }
             
@@ -300,6 +297,8 @@ namespace YoutubeMusicStoreAndPlay
         private void DisableAddVideo()
         {
 
+            txtVideoName.Text = YoutubeVideoList[lbVideoList.SelectedIndex].Title;
+            txtVideoURL.Text = "http://www.youtube.com/watch?v=" + YoutubeVideoList[lbVideoList.SelectedIndex].VideoURL;
             btnAddVideo.Visible = false;
 
         }
@@ -317,7 +316,50 @@ namespace YoutubeMusicStoreAndPlay
 
         }
 
-        
+        private void btnMoveSelectedItemUp_Click(object sender, EventArgs e)
+        {
+
+            if(lbVideoList.SelectedIndex != -1 && lbVideoList.SelectedIndex != 0)
+            {
+
+                YoutubeVideo tempYoutubeVideo = YoutubeVideoList[lbVideoList.SelectedIndex];
+
+                YoutubeVideoList[lbVideoList.SelectedIndex] = YoutubeVideoList[lbVideoList.SelectedIndex - 1];
+
+                YoutubeVideoList[lbVideoList.SelectedIndex - 1] = tempYoutubeVideo;
+
+                lbVideoList.SelectedIndex--;
+
+                SaveVideoItems();
+
+                ReloadListBox();
+
+
+            }
+        }
+
+        private void btnMoveSelectedItemDown_Click(object sender, EventArgs e)
+        {
+
+            if (lbVideoList.SelectedIndex != -1 && lbVideoList.SelectedIndex != YoutubeVideoList.Count)
+            {
+
+                YoutubeVideo tempYoutubeVideo = YoutubeVideoList[lbVideoList.SelectedIndex];
+
+                YoutubeVideoList[lbVideoList.SelectedIndex] = YoutubeVideoList[lbVideoList.SelectedIndex + 1];
+
+                YoutubeVideoList[lbVideoList.SelectedIndex + 1] = tempYoutubeVideo;
+
+                lbVideoList.SelectedIndex++;
+
+                SaveVideoItems();
+
+                ReloadListBox();
+
+
+            }
+
+        }       
 
         
         #region URLControlMethodes
