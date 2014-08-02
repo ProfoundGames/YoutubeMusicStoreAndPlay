@@ -24,6 +24,8 @@ namespace YoutubeMusicStoreAndPlay
 
             ReloadListBox();
 
+            LoadToolTips();
+
         }
 
         #region ButtonControls
@@ -41,6 +43,14 @@ namespace YoutubeMusicStoreAndPlay
                 YoutubeVideoList.Add(new YoutubeVideo(txtVideoName.Text, txtVideoURL.Text.Substring(32, 11)));
                 txtVideoName.Clear();
                 txtVideoURL.Clear();
+            }
+            else if (txtImportPath.Text != "" && txtVideoURL.Text.Substring(0,36) == "https://www.youtube.com/watch?list=")
+            {
+
+            }
+            else if(txtImportPath.Text != "" && txtVideoURL.Text.Substring(0, 35) == "http://www.youtube.com/watch?list=")
+            {
+
             }
             else
                 MessageBox.Show("You didn't filled in the name or Youtube url right.");
@@ -127,13 +137,21 @@ namespace YoutubeMusicStoreAndPlay
 
             int tempInt = random.Next(0, YoutubeVideoList.Count());
 
-            string tempURL = YoutubeVideoList[tempInt].VideoURL;
+            if (tempInt != lbVideoList.SelectedIndex)
+            {
+                string tempURL = YoutubeVideoList[tempInt].VideoURL;
 
-            axShockwaveFlash1.Movie = "http://youtube.com/v/" + tempURL + "&loop=1&autoplay=1";
+                axShockwaveFlash1.Movie = "http://youtube.com/v/" + tempURL + "&loop=1&autoplay=1";
 
-            lbVideoList.SelectedIndex = tempInt;
+                lbVideoList.SelectedIndex = tempInt;
 
-            tabControl1.SelectedIndex = 1;
+                if (cbGoToPlayer.Checked)
+                {
+                    tabControl1.SelectedIndex = 1;
+                }
+            }
+            else
+                btnPlayAndRemove_Click(sender, e);
 
         }
 
@@ -146,7 +164,10 @@ namespace YoutubeMusicStoreAndPlay
 
                 axShockwaveFlash1.Movie = "http://youtube.com/v/" + tempURL + "?autoplay=1&showinfo=0&rel=0&showinfo=0";
 
-                tabControl1.SelectedIndex = 1;
+                if (cbGoToPlayer.Checked)
+                {
+                    tabControl1.SelectedIndex = 1;
+                }
 
                 YoutubeVideoList.RemoveAt(lbVideoList.SelectedIndex);
 
@@ -182,11 +203,13 @@ namespace YoutubeMusicStoreAndPlay
 
                 YoutubeVideoList[lbVideoList.SelectedIndex - 1] = tempYoutubeVideo;
 
-                lbVideoList.SelectedIndex--;
+                int tempIndex = --lbVideoList.SelectedIndex;
 
                 SaveVideoItems();
 
                 ReloadListBox();
+
+                lbVideoList.SelectedIndex = tempIndex;
 
 
             }
@@ -204,17 +227,18 @@ namespace YoutubeMusicStoreAndPlay
 
                 YoutubeVideoList[lbVideoList.SelectedIndex + 1] = tempYoutubeVideo;
 
-                lbVideoList.SelectedIndex++;
+                int tempIndex = ++lbVideoList.SelectedIndex;
 
                 SaveVideoItems();
 
                 ReloadListBox();
 
-
+                lbVideoList.SelectedIndex = tempIndex;
             }
 
         }
 
+        #region Exportfile
         private void btnExport_Click(object sender, EventArgs e)
         {
 
@@ -262,6 +286,33 @@ namespace YoutubeMusicStoreAndPlay
             }
 
         }
+        #endregion
+
+        #region Importfile
+        private void btnImport_Click(object sender, EventArgs e)
+        {
+
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+
+            openFileDialog.Filter = "Text files (YoutubeVideoEXPORT.txt)|YoutubeVideoEXPORT.txt";
+
+            if (openFileDialog.ShowDialog() == DialogResult.OK)
+            {
+
+                axShockwaveFlash1.Refresh();
+
+            }
+
+        }
+
+        private void btnGoImport_Click(object sender, EventArgs e)
+        {
+
+
+
+        }
+
+        #endregion
 
         #endregion
 
@@ -292,13 +343,14 @@ namespace YoutubeMusicStoreAndPlay
             if(lbVideoList.SelectedIndex != -1)
             {
 
-                axShockwaveFlash1.Movie = "";
-
                 string tempURL = YoutubeVideoList[lbVideoList.SelectedIndex].VideoURL;
 
                 axShockwaveFlash1.Movie = "http://youtube.com/v/" + tempURL + "?autoplay=1&showinfo=0&rel=0&showinfo=0";
 
-                tabControl1.SelectedIndex = 1;
+                if(cbGoToPlayer.Checked)
+                {
+                    tabControl1.SelectedIndex = 1;
+                }
 
             }
         }
@@ -362,6 +414,17 @@ namespace YoutubeMusicStoreAndPlay
 
 
         #region Methodes
+
+        private void LoadToolTips()
+        {
+
+            #region GoToPlayerToolTip
+            ToolTip ttGoToVideo = new ToolTip();
+            ttGoToVideo.ShowAlways = true;
+            ttGoToVideo.SetToolTip(cbGoToPlayer, "If this is checked, You will be send to the video then you press play.");
+            #endregion
+
+        }
 
         private void DirectoryAndFileChecker()
         {
@@ -522,24 +585,19 @@ namespace YoutubeMusicStoreAndPlay
 
         #endregion
 
-        private void btnImport_Click(object sender, EventArgs e)
-        {
-
-            
-
-        }
-
-        private void btnGoImport_Click(object sender, EventArgs e)
-        {
-
-
-
-        }
+       
 
         private void lbVideoList_DoubleClick(object sender, EventArgs e)
         {
 
             btnPlaySelectedVideo_Click(sender, e);
+
+        }
+
+        private void btnTest_Click(object sender, EventArgs e)
+        {
+
+            
 
         }
 

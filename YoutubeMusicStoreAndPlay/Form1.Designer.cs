@@ -62,6 +62,8 @@
             this.btnMoveSelectedItemDown = new System.Windows.Forms.Button();
             this.lbVideoList = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.cbGoToPlayer = new System.Windows.Forms.CheckBox();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).BeginInit();
             this.tabPage2.SuspendLayout();
@@ -71,6 +73,7 @@
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage3
@@ -95,6 +98,7 @@
             // tabPage2
             // 
             this.tabPage2.BackColor = System.Drawing.Color.LightSkyBlue;
+            this.tabPage2.Controls.Add(this.groupBox6);
             this.tabPage2.Controls.Add(this.groupBox5);
             this.tabPage2.Controls.Add(this.groupBox2);
             this.tabPage2.Controls.Add(this.groupBox1);
@@ -418,6 +422,28 @@
             this.tabControl1.Size = new System.Drawing.Size(823, 486);
             this.tabControl1.TabIndex = 0;
             // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.cbGoToPlayer);
+            this.groupBox6.Location = new System.Drawing.Point(402, 391);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(386, 63);
+            this.groupBox6.TabIndex = 7;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Settings";
+            // 
+            // cbGoToPlayer
+            // 
+            this.cbGoToPlayer.AutoSize = true;
+            this.cbGoToPlayer.Checked = true;
+            this.cbGoToPlayer.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbGoToPlayer.Location = new System.Drawing.Point(10, 20);
+            this.cbGoToPlayer.Name = "cbGoToPlayer";
+            this.cbGoToPlayer.Size = new System.Drawing.Size(128, 17);
+            this.cbGoToPlayer.TabIndex = 0;
+            this.cbGoToPlayer.Text = "Go To YoutubePlayer";
+            this.cbGoToPlayer.UseVisualStyleBackColor = true;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -443,6 +469,8 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -482,6 +510,8 @@
         private System.Windows.Forms.Button btnImport;
         private System.Windows.Forms.Button btnGoImport;
         private System.Windows.Forms.Button btnGoExport;
+        private System.Windows.Forms.GroupBox groupBox6;
+        private System.Windows.Forms.CheckBox cbGoToPlayer;
 
     }
 }
