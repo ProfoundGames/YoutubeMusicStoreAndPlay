@@ -32,6 +32,8 @@
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.axShockwaveFlash1 = new AxShockwaveFlashObjects.AxShockwaveFlash();
             this.tabPage2 = new System.Windows.Forms.TabPage();
+            this.groupBox6 = new System.Windows.Forms.GroupBox();
+            this.cbGoToPlayer = new System.Windows.Forms.CheckBox();
             this.groupBox5 = new System.Windows.Forms.GroupBox();
             this.btnGoImport = new System.Windows.Forms.Button();
             this.btnGoExport = new System.Windows.Forms.Button();
@@ -62,18 +64,17 @@
             this.btnMoveSelectedItemDown = new System.Windows.Forms.Button();
             this.lbVideoList = new System.Windows.Forms.ListBox();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.groupBox6 = new System.Windows.Forms.GroupBox();
-            this.cbGoToPlayer = new System.Windows.Forms.CheckBox();
+            this.btnTest = new System.Windows.Forms.Button();
             this.tabPage3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).BeginInit();
             this.tabPage2.SuspendLayout();
+            this.groupBox6.SuspendLayout();
             this.groupBox5.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox4.SuspendLayout();
             this.groupBox3.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.groupBox6.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabPage3
@@ -111,6 +112,29 @@
             this.tabPage2.Size = new System.Drawing.Size(815, 460);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Video controls";
+            // 
+            // groupBox6
+            // 
+            this.groupBox6.Controls.Add(this.btnTest);
+            this.groupBox6.Controls.Add(this.cbGoToPlayer);
+            this.groupBox6.Location = new System.Drawing.Point(402, 391);
+            this.groupBox6.Name = "groupBox6";
+            this.groupBox6.Size = new System.Drawing.Size(386, 63);
+            this.groupBox6.TabIndex = 7;
+            this.groupBox6.TabStop = false;
+            this.groupBox6.Text = "Settings";
+            // 
+            // cbGoToPlayer
+            // 
+            this.cbGoToPlayer.AutoSize = true;
+            this.cbGoToPlayer.Checked = true;
+            this.cbGoToPlayer.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.cbGoToPlayer.Location = new System.Drawing.Point(10, 20);
+            this.cbGoToPlayer.Name = "cbGoToPlayer";
+            this.cbGoToPlayer.Size = new System.Drawing.Size(128, 17);
+            this.cbGoToPlayer.TabIndex = 0;
+            this.cbGoToPlayer.Text = "Go To YoutubePlayer";
+            this.cbGoToPlayer.UseVisualStyleBackColor = true;
             // 
             // groupBox5
             // 
@@ -422,27 +446,15 @@
             this.tabControl1.Size = new System.Drawing.Size(823, 486);
             this.tabControl1.TabIndex = 0;
             // 
-            // groupBox6
+            // btnTest
             // 
-            this.groupBox6.Controls.Add(this.cbGoToPlayer);
-            this.groupBox6.Location = new System.Drawing.Point(402, 391);
-            this.groupBox6.Name = "groupBox6";
-            this.groupBox6.Size = new System.Drawing.Size(386, 63);
-            this.groupBox6.TabIndex = 7;
-            this.groupBox6.TabStop = false;
-            this.groupBox6.Text = "Settings";
-            // 
-            // cbGoToPlayer
-            // 
-            this.cbGoToPlayer.AutoSize = true;
-            this.cbGoToPlayer.Checked = true;
-            this.cbGoToPlayer.CheckState = System.Windows.Forms.CheckState.Checked;
-            this.cbGoToPlayer.Location = new System.Drawing.Point(10, 20);
-            this.cbGoToPlayer.Name = "cbGoToPlayer";
-            this.cbGoToPlayer.Size = new System.Drawing.Size(128, 17);
-            this.cbGoToPlayer.TabIndex = 0;
-            this.cbGoToPlayer.Text = "Go To YoutubePlayer";
-            this.cbGoToPlayer.UseVisualStyleBackColor = true;
+            this.btnTest.Location = new System.Drawing.Point(165, 20);
+            this.btnTest.Name = "btnTest";
+            this.btnTest.Size = new System.Drawing.Size(75, 23);
+            this.btnTest.TabIndex = 1;
+            this.btnTest.Text = "test";
+            this.btnTest.UseVisualStyleBackColor = true;
+            this.btnTest.Click += new System.EventHandler(this.btnTest_Click_1);
             // 
             // Form1
             // 
@@ -460,6 +472,8 @@
             this.tabPage3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)(this.axShockwaveFlash1)).EndInit();
             this.tabPage2.ResumeLayout(false);
+            this.groupBox6.ResumeLayout(false);
+            this.groupBox6.PerformLayout();
             this.groupBox5.ResumeLayout(false);
             this.groupBox5.PerformLayout();
             this.groupBox2.ResumeLayout(false);
@@ -469,8 +483,6 @@
             this.groupBox4.ResumeLayout(false);
             this.groupBox3.ResumeLayout(false);
             this.tabControl1.ResumeLayout(false);
-            this.groupBox6.ResumeLayout(false);
-            this.groupBox6.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -512,6 +524,7 @@
         private System.Windows.Forms.Button btnGoExport;
         private System.Windows.Forms.GroupBox groupBox6;
         private System.Windows.Forms.CheckBox cbGoToPlayer;
+        private System.Windows.Forms.Button btnTest;
 
     }
 }

@@ -8,6 +8,8 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
+using System.Net;
+using System.Collections.Specialized;
 
 namespace YoutubeMusicStoreAndPlay
 {
@@ -15,6 +17,8 @@ namespace YoutubeMusicStoreAndPlay
     {
 
         private List<YoutubeVideo> YoutubeVideoList = new List<YoutubeVideo>();
+
+        private ToolTip toolTips = new ToolTip();
 
         public Form1()
         {
@@ -119,15 +123,39 @@ namespace YoutubeMusicStoreAndPlay
                 else
                     MessageBox.Show("You didn't filled in the name or Youtube url right.");
 
+                int temp = lbVideoList.SelectedIndex;
+
                 SaveVideoItems();
 
                 ReloadListBox();
+
+                lbVideoList.SelectedIndex = temp;
+
             }
             else
             {
                 MessageBox.Show("Disable add video mode first! Then you can update the selected video's info.");
             }
 
+        }
+
+        private void btnPlaySelectedVideo_Click(object sender, EventArgs e)
+        {
+            if (lbVideoList.SelectedIndex != -1)
+            {
+
+                string tempURL = YoutubeVideoList[lbVideoList.SelectedIndex].VideoURL;
+
+                axShockwaveFlash1.Movie = "http://youtube.com/v/" + tempURL + "?autoplay=1&showinfo=0&rel=0&showinfo=0";
+
+                if (cbGoToPlayer.Checked)
+                {
+                    tabControl1.SelectedIndex = 1;
+                }
+
+                ChangeFormTitle();
+
+            }
         }
 
         private void btnPlayRandomVideo_Click(object sender, EventArgs e)
@@ -153,6 +181,8 @@ namespace YoutubeMusicStoreAndPlay
             else
                 btnPlayAndRemove_Click(sender, e);
 
+            ChangeFormTitle();
+
         }
 
         private void btnPlayAndRemove_Click(object sender, EventArgs e)
@@ -174,6 +204,9 @@ namespace YoutubeMusicStoreAndPlay
                 SaveVideoItems();
 
                 ReloadListBox();
+
+                ChangeFormTitle();
+
             }
 
         }
@@ -218,7 +251,7 @@ namespace YoutubeMusicStoreAndPlay
         private void btnMoveSelectedItemDown_Click(object sender, EventArgs e)
         {
 
-            if (lbVideoList.SelectedIndex != -1 && lbVideoList.SelectedIndex != YoutubeVideoList.Count)
+            if (lbVideoList.SelectedIndex != -1 && lbVideoList.SelectedIndex != YoutubeVideoList.Count - 1)
             {
 
                 YoutubeVideo tempYoutubeVideo = YoutubeVideoList[lbVideoList.SelectedIndex];
@@ -299,7 +332,7 @@ namespace YoutubeMusicStoreAndPlay
             if (openFileDialog.ShowDialog() == DialogResult.OK)
             {
 
-                axShockwaveFlash1.Refresh();
+                MessageBox.Show("This function isn't build in yet! \r\n But it will be implemented in V2.0.\r\n Stay tuned at my site: profoundsoftware.byethost22.com");
 
             }
 
@@ -308,7 +341,7 @@ namespace YoutubeMusicStoreAndPlay
         private void btnGoImport_Click(object sender, EventArgs e)
         {
 
-
+            MessageBox.Show("This function isn't build in yet! \r\n But it will be implemented in V2.0.\r\n Stay tuned at my site: profoundsoftware.byethost22.com");
 
         }
 
@@ -338,22 +371,7 @@ namespace YoutubeMusicStoreAndPlay
                 txtVideoURL.Text = "Example: http://www.youtube.com/watch?v=abcdefghijk";
         }
 
-        private void btnPlaySelectedVideo_Click(object sender, EventArgs e)
-        {
-            if(lbVideoList.SelectedIndex != -1)
-            {
-
-                string tempURL = YoutubeVideoList[lbVideoList.SelectedIndex].VideoURL;
-
-                axShockwaveFlash1.Movie = "http://youtube.com/v/" + tempURL + "?autoplay=1&showinfo=0&rel=0&showinfo=0";
-
-                if(cbGoToPlayer.Checked)
-                {
-                    tabControl1.SelectedIndex = 1;
-                }
-
-            }
-        }
+        
 
         private void lbVideoList_SelectedIndexChanged(object sender, EventArgs e)
         {
@@ -417,12 +435,8 @@ namespace YoutubeMusicStoreAndPlay
 
         private void LoadToolTips()
         {
-
-            #region GoToPlayerToolTip
-            ToolTip ttGoToVideo = new ToolTip();
-            ttGoToVideo.ShowAlways = true;
-            ttGoToVideo.SetToolTip(cbGoToPlayer, "If this is checked, You will be send to the video then you press play.");
-            #endregion
+                toolTips.ShowAlways = true;
+                toolTips.SetToolTip(cbGoToPlayer, "If this is checked, You will be send to the video then you press play.");
 
         }
 
@@ -551,6 +565,13 @@ namespace YoutubeMusicStoreAndPlay
 
         }
 
+        private void ChangeFormTitle()
+        {
+
+            this.Text = string.Format("{0} - YTVSaP", YoutubeVideoList[lbVideoList.SelectedIndex].Title);
+
+        }
+
         //custom search methode [wip]
         private int CompairString(string stringToCompair)
         {
@@ -585,8 +606,6 @@ namespace YoutubeMusicStoreAndPlay
 
         #endregion
 
-       
-
         private void lbVideoList_DoubleClick(object sender, EventArgs e)
         {
 
@@ -599,6 +618,37 @@ namespace YoutubeMusicStoreAndPlay
 
             
 
+        }
+
+        private void cbShowToolTips_CheckedChanged(object sender, EventArgs e)
+        {
+                LoadToolTips();
+        }
+
+        private void btnTest_Click_1(object sender, EventArgs e)
+        {
+            string name = GetTitle(url);
+
+public string GetTitle(string url)
+{
+    string id = GetArgs(url, "v", '?');
+    WebClient client = new WebClient();
+    return GetArgs(client.DownloadString("http://youtube.com/get_video_info?video_id=" + id), "title", '&');
+}
+
+private string GetArgs(string args, string key, char query)
+{
+    int iqs = args.IndexOf(query);
+    string querystring = null;
+
+    if (iqs != -1)
+    {
+        querystring = (iqs < args.Length - 1) ? args.Substring(iqs + 1) : String.Empty;
+        NameValueCollection nvcArgs = HttpUtility.ParseQueryString(querystring);
+        return nvcArgs[key];
+    }
+    return String.Empty; // or throw an error
+}
         }
 
 

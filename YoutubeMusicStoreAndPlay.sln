@@ -5,16 +5,40 @@ VisualStudioVersion = 12.0.21005.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "YoutubeMusicStoreAndPlay", "YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay.csproj", "{10AA8C0C-36E2-4C9A-AD93-ED1BBD090047}"
 EndProject
+Project("{6141683F-8A12-4E36-9623-2EB02B2C2303}") = "YoutubeSaP", "YoutubeSaP\YoutubeSaP.isproj", "{3FA21B40-B10B-4620-BE66-5C653D3A7AF4}"
+	ProjectSection(ProjectDependencies) = postProject
+		{10AA8C0C-36E2-4C9A-AD93-ED1BBD090047} = {10AA8C0C-36E2-4C9A-AD93-ED1BBD090047}
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		CD_ROM|Any CPU = CD_ROM|Any CPU
 		Debug|Any CPU = Debug|Any CPU
+		DVD-5|Any CPU = DVD-5|Any CPU
 		Release|Any CPU = Release|Any CPU
+		SingleImage|Any CPU = SingleImage|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{10AA8C0C-36E2-4C9A-AD93-ED1BBD090047}.CD_ROM|Any CPU.ActiveCfg = Release|Any CPU
+		{10AA8C0C-36E2-4C9A-AD93-ED1BBD090047}.CD_ROM|Any CPU.Build.0 = Release|Any CPU
 		{10AA8C0C-36E2-4C9A-AD93-ED1BBD090047}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{10AA8C0C-36E2-4C9A-AD93-ED1BBD090047}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{10AA8C0C-36E2-4C9A-AD93-ED1BBD090047}.DVD-5|Any CPU.ActiveCfg = Debug|Any CPU
+		{10AA8C0C-36E2-4C9A-AD93-ED1BBD090047}.DVD-5|Any CPU.Build.0 = Debug|Any CPU
 		{10AA8C0C-36E2-4C9A-AD93-ED1BBD090047}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{10AA8C0C-36E2-4C9A-AD93-ED1BBD090047}.Release|Any CPU.Build.0 = Release|Any CPU
+		{10AA8C0C-36E2-4C9A-AD93-ED1BBD090047}.SingleImage|Any CPU.ActiveCfg = Release|Any CPU
+		{10AA8C0C-36E2-4C9A-AD93-ED1BBD090047}.SingleImage|Any CPU.Build.0 = Release|Any CPU
+		{3FA21B40-B10B-4620-BE66-5C653D3A7AF4}.CD_ROM|Any CPU.ActiveCfg = CD_ROM
+		{3FA21B40-B10B-4620-BE66-5C653D3A7AF4}.CD_ROM|Any CPU.Build.0 = CD_ROM
+		{3FA21B40-B10B-4620-BE66-5C653D3A7AF4}.Debug|Any CPU.ActiveCfg = DVD-5
+		{3FA21B40-B10B-4620-BE66-5C653D3A7AF4}.Debug|Any CPU.Build.0 = DVD-5
+		{3FA21B40-B10B-4620-BE66-5C653D3A7AF4}.DVD-5|Any CPU.ActiveCfg = DVD-5
+		{3FA21B40-B10B-4620-BE66-5C653D3A7AF4}.DVD-5|Any CPU.Build.0 = DVD-5
+		{3FA21B40-B10B-4620-BE66-5C653D3A7AF4}.Release|Any CPU.ActiveCfg = SingleImage
+		{3FA21B40-B10B-4620-BE66-5C653D3A7AF4}.Release|Any CPU.Build.0 = SingleImage
+		{3FA21B40-B10B-4620-BE66-5C653D3A7AF4}.SingleImage|Any CPU.ActiveCfg = SingleImage
+		{3FA21B40-B10B-4620-BE66-5C653D3A7AF4}.SingleImage|Any CPU.Build.0 = SingleImage
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

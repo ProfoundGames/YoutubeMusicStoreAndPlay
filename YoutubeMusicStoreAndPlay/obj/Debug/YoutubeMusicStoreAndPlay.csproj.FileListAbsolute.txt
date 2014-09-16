@@ -23,7 +23,6 @@ D:\Defelopment\C#\YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay\bin\Debug\Yo
 D:\Defelopment\C#\YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay\bin\Debug\YoutubeMusicStoreAndPlay.pdb
 D:\Defelopment\C#\YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay\bin\Debug\Interop.ShockwaveFlashObjects.dll
 D:\Defelopment\C#\YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay\bin\Debug\AxInterop.ShockwaveFlashObjects.dll
-D:\Defelopment\C#\YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay\obj\Debug\YoutubeMusicStoreAndPlay.csprojResolveAssemblyReference.cache
 D:\Defelopment\C#\YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay\obj\Debug\Interop.ShockwaveFlashObjects.dll
 D:\Defelopment\C#\YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay\obj\Debug\AxInterop.ShockwaveFlashObjects.dll
 D:\Defelopment\C#\YoutubeMusicStoreAndPlay\YoutubeMusicStoreAndPlay\obj\Debug\YoutubeMusicStoreAndPlay.csproj.ResolveComReference.cache
